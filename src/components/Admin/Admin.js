@@ -15,6 +15,7 @@ class Admin extends Component {
 
     componentDidMount = () => {
         this.props.dispatch({type: 'SET_ADMIN', payload: true})
+        this.props.dispatch({type: 'FETCH_PROJECTS'})
     }
 
     setAuth = () => {
@@ -68,7 +69,19 @@ class Admin extends Component {
         console.log(this.state);
     }
 
+    deleteProject = (project) => {
+        this.props.dispatch({type: 'DELETE_PROJECT', payload: project.id})
+    }
+
   render() {
+      let projectTableData = this.props.reduxStore.projectList.map(project => {
+          return (
+            <tr>
+                <td>{project.name}</td>
+                <td><button onClick={() => this.deleteProject(project)}>Delete</button></td>
+            </tr>
+          )
+      })
     return (
       <div>
         <Link onClick={this.setAuth} to="/">Back to Projects</Link>
@@ -91,6 +104,17 @@ class Admin extends Component {
                 <textarea onChange={this.changeDescriptionState} type="text" placeholder="Description" />
                 <input onClick={this.submitForm} type="submit"/>
             </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {projectTableData}
+                </tbody>
+            </table>
         </div>
       </div>
     )
