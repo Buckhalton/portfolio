@@ -7,7 +7,7 @@ class Admin extends Component {
     state = {
         name: '',
         date: '',
-        tag: 0,
+        tag_id: 0,
         github: '',
         website: '',
         description: '',
@@ -25,7 +25,7 @@ class Admin extends Component {
     changeTagState = (event) => {
         this.setState({
             ...this.state,
-            tag: event.target.value
+            tag_id: event.target.value
         })
     }
 
