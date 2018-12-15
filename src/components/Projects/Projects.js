@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 
 class Projects extends Component {
     componentDidMount = () => {
-        this.props.dispatch('FETCH_PROJECTS')
+        this.props.dispatch({type: 'FETCH_PROJECTS'})
     }
 
   render() {
