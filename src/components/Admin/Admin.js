@@ -77,7 +77,7 @@ class Admin extends Component {
   render() {
       let projectTableData = this.props.reduxStore.projects.map(project => {
           return (
-            <tr>
+            <tr key={project.id}>
                 <td>{project.name}</td>
                 <td><button onClick={() => this.deleteProject(project)}>Delete</button></td>
             </tr>

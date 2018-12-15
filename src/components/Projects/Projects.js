@@ -12,7 +12,7 @@ class Projects extends Component {
           return(
               <div key={project.id}>
                 <hr/>
-                <img alt="goat" src="/images/goat_small.jpg"/>
+                <img alt="thumbnail" src={project.thumbnail}/>
                 <h3>{project.name}</h3>
                 <a href={project.github}>Github</a>
                 <a href={project.website}>Website</a>

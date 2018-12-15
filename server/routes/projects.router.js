@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-router.get('/api/projects', (req, res) => {
+router.get('/', (req, res) => {
     const queryText = 'SELECT * FROM "projects" LEFT JOIN "tags" ON "projects".tag_id = "tags".id;';
     pool.query(queryText)
     .then(result => {
@@ -14,7 +14,7 @@ router.get('/api/projects', (req, res) => {
     })
 })
 
-router.post('/api/projects', (req, res) => {
+router.post('/', (req, res) => {
     const project = req.body;
     const queryText = 'INSERT INTO "projects" ("name", "description", "website", "github", "date_completed", "tag_id") ' +
     'VALUES ($1, $2, $3, $4, $5, $6);';
@@ -28,7 +28,7 @@ router.post('/api/projects', (req, res) => {
     })
 })
 
-router.delete('/api/projects/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
     const queryText = 'DELETE FROM "projects" WHERE id =$1;';
     pool.query(queryText, [id])

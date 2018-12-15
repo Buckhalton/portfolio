@@ -31,7 +31,7 @@ function* deleteProjects(action) {
 function* fetchProjects() {
     try {
         const projectResponse = yield call(axios.get, '/api/projects')
-        yield dispatch('SET_PROJECTS', projectResponse.data)
+        yield dispatch({type: 'SET_PROJECTS', payload: projectResponse.data})
     } catch(error) {
         console.log(error);
     }
