@@ -18,6 +18,16 @@ function* rootSaga() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+const isAuthenticated = (state = false, action) => {
+    switch(action.type){
+        case 'SET_ADMIN':
+        state = action.payload
+            return state;
+        default:
+            return state;
+    }
+}
+
 // Used to store projects returned from the server
 const projects = (state = [], action) => {
     switch (action.type) {
@@ -43,6 +53,7 @@ const storeInstance = createStore(
     combineReducers({
         projects,
         tags,
+        isAuthenticated,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
