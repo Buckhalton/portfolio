@@ -22,47 +22,59 @@ class Admin extends Component {
         this.props.dispatch({type: 'SET_ADMIN', payload: false})
     }
 
-    changeTagState = (event) => {
-        this.setState({
-            ...this.state,
-            tag_id: event.target.value
-        })
-    }
+    // changeTagState = (event) => {
+    //     this.setState({
+    //         ...this.state,
+    //         tag_id: event.target.value
+    //     })
+    // }
 
-    changeDateState = (event) => {
-        this.setState({
-            ...this.state,
-            date_completed: event.target.value,
-        })
-    }
+    // changeDateState = (event) => {
+    //     this.setState({
+    //         ...this.state,
+    //         date_completed: event.target.value,
+    //     })
+    // }
 
-    changeNameState = (event) => {
+    // changeNameState = (event) => {
+    //     this.setState({
+    //         ...this.state,
+    //         name: event.target.value,
+    //     })
+    // }
+
+    // changeGithubState = (event) => {
+    //     this.setState({
+    //         ...this.state,
+    //         github: event.target.value,
+    //     })
+    // }
+
+    // changeDescriptionState = (event) => {
+    //     this.setState({
+    //         ...this.state,
+    //         description: event.target.value,
+    //     })
+    // }
+
+    // changeWebsiteState = (event) => {
+    //     this.setState({
+    //         ...this.state,
+    //         website: event.target.value,
+    //     })
+    // }
+
+    changeState = (event) => {
         this.setState({
-            ...this.state,
             name: event.target.value,
-        })
-    }
-
-    changeGithubState = (event) => {
-        this.setState({
-            ...this.state,
+            date_completed: event.target.value,
+            tag_id: event.target.value,
             github: event.target.value,
-        })
-    }
-
-    changeDescriptionState = (event) => {
-        this.setState({
-            ...this.state,
+            website: event.target.value,
             description: event.target.value,
         })
     }
 
-    changeWebsiteState = (event) => {
-        this.setState({
-            ...this.state,
-            website: event.target.value,
-        })
-    }
 
     submitForm = (event) => {
         event.preventDefault();
@@ -89,9 +101,9 @@ class Admin extends Component {
         <div>
             <h2>Add New Project</h2>
             <form>
-                <input onChange={this.changeNameState} type="text" placeholder="name"/>
-                <input onChange={this.changeDateState} type="date"/>
-                <select onChange={this.changeTagState}defaultValue={0}>
+                <input value={this.state.name} onChange={this.changeState} type="text" placeholder="name"/>
+                <input value={this.state.date_completed} onChange={this.changeState} type="date"/>
+                <select value={this.state.tag_id} onChange={this.changeState} defaultValue={0}>
                     <option value={0} disabled>Select a Tag</option>
                     <option value={1}>React</option>
                     <option value={2}>jQuery</option>
@@ -100,9 +112,9 @@ class Admin extends Component {
                     <option value={5}>Redux</option>
                     <option value={6}>HTML</option>
                 </select>
-                <input onChange={this.changeGithubState} type="text" placeholder="Github URL"/>
-                <input onChange={this.changeWebsiteState} type="text" placeholder="Website URL(Optional)" />
-                <textarea onChange={this.changeDescriptionState} type="text" placeholder="Description" />
+                <input value={this.state.github} onChange={this.changeState} type="text" placeholder="Github URL"/>
+                <input value={this.state.website} onChange={this.changeState} type="text" placeholder="Website URL(Optional)" />
+                <textarea value={this.state.description} onChange={this.changeState} type="text" placeholder="Description" />
                 <input onClick={this.submitForm} type="submit"/>
             </form>
             <table>
