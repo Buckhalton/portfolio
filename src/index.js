@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App/App.js';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { call, put as dispatch, takeEvery } from 'redux-saga/effects';
 // Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
@@ -12,7 +13,36 @@ import createSagaMiddleware from 'redux-saga';
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    yield takeEvery('FETCH_PROJECTS', fetchProjects)
+    yield takeEvery('DELETE_PROJECTS', deleteProjects)
+    yield takeEvery('POST_PROJECTS', postProjects)
+}
 
+function* deleteProjects(action) {
+    try {
+        yield call(axios.delete, `/projects/${action.payload}`)
+        yield dispatch('FETCH_PROJECTS')
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+function* fetchProjects() {
+    try {
+        const projectResponse = yield call(axios.get, '/projects')
+        yield dispatch('SET_PROJECTS', projectResponse.data)
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+function* postProjects(action) {
+    try {
+        yield call(axios.post, '/projects', action.payload)
+        yield dispatch('FETCH_PROJECTS')
+    } catch(error) {
+        console.log(error);
+    }
 }
 
 // Create sagaMiddleware
