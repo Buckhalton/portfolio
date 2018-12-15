@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 class Admin extends Component {
     state = {
         name: '',
-        date: '',
+        date_completed: '',
         tag_id: 0,
         github: '',
         website: '',
@@ -32,7 +32,7 @@ class Admin extends Component {
     changeDateState = (event) => {
         this.setState({
             ...this.state,
-            date: event.target.value,
+            date_completed: event.target.value,
         })
     }
 
