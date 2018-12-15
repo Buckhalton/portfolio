@@ -67,6 +67,7 @@ class Admin extends Component {
     submitForm = (event) => {
         event.preventDefault();
         console.log(this.state);
+        this.props.dispatch({type: 'POST_PROJECTS', payload: this.state})
     }
 
     deleteProject = (project) => {
@@ -74,7 +75,7 @@ class Admin extends Component {
     }
 
   render() {
-      let projectTableData = this.props.reduxStore.projectList.map(project => {
+      let projectTableData = this.props.reduxStore.projects.map(project => {
           return (
             <tr>
                 <td>{project.name}</td>
