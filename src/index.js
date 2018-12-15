@@ -21,7 +21,7 @@ function* rootSaga() {
 
 function* deleteProjects(action) {
     try {
-        yield call(axios.delete, `/projects/${action.payload}`)
+        yield call(axios.delete, `/api/projects/${action.payload}`)
         yield dispatch('FETCH_PROJECTS')
     } catch(error) {
         console.log(error);
@@ -30,7 +30,7 @@ function* deleteProjects(action) {
 
 function* fetchProjects() {
     try {
-        const projectResponse = yield call(axios.get, '/projects')
+        const projectResponse = yield call(axios.get, '/api/projects')
         yield dispatch('SET_PROJECTS', projectResponse.data)
     } catch(error) {
         console.log(error);
@@ -39,7 +39,7 @@ function* fetchProjects() {
 
 function* postProjects(action) {
     try {
-        yield call(axios.post, '/projects', action.payload)
+        yield call(axios.post, '/api/projects', action.payload)
         yield dispatch('FETCH_PROJECTS')
     } catch(error) {
         console.log(error);
