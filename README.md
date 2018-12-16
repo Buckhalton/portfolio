@@ -3,11 +3,10 @@ I made this project to practice making a portfolio. It displays projects I've ma
 
 ## Built With
 
-React
-Redux
-Redux-Sagas
+React,
+Redux,
+Redux-Sagas,
 PostgreSQL
-node.js
 
 ## Getting Started
 
