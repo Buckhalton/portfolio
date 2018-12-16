@@ -14,8 +14,8 @@ class Projects extends Component {
                 <hr/>
                 <img alt="thumbnail" src={project.thumbnail}/>
                 <h3>{project.name}</h3>
-                <a href={project.github}>Github</a>
-                <a href={project.website}>Website</a>
+                <a target="_blank" href={project.github}>Github</a>
+                <a target="_blank" href={project.website}>Website</a>
                 <h4>{project.tag}</h4>
                 <p>{project.description}</p>
             <hr/>    

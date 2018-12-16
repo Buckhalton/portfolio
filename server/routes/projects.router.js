@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
-    const queryText = 'DELETE FROM "projects" WHERE id =$1;';
+    const queryText = 'DELETE FROM projects WHERE id = $1;';
     pool.query(queryText, [id])
     .then(result => {
         res.sendStatus(202);
