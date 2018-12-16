@@ -1,21 +1,51 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
+import AppBar from '@material-ui/core/AppBar';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { createMuiTheme } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#81d4fa',
+    },
+    secondary: {
+      main: '#80cbc4',
+    },
+  },
+});
+
+const styles = {
+    root: {
+      flexGrow: 1,
+    },
+    appBarText: {
+    }
+  };
 
 class Header extends Component {
   render() {
       //conditional rendering for admin page
       let display;
       if(this.props.reduxStore.isAuthenticated){
-          display = <div><h1>Admin</h1></div>
+          display = 'Admin';
       } else {
-          display = <div></div>
+          display = 'My Portoflio';
       }
     return (
-      <div>
-          <header>
-              {display}
-          </header>
-      </div>
+        <MuiThemeProvider theme={theme}>
+            <React.Fragment className={styles.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                    <Typography className={styles.appBarText} variant="h6">
+                        {display}
+                    </Typography>
+                    </Toolbar>
+                </AppBar>
+            </React.Fragment>
+        </MuiThemeProvider>
     )
   }
 }
