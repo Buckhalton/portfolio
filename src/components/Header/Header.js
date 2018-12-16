@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 class Header extends Component {
   render() {
+      //conditional rendering for admin page
       let display;
       if(this.props.reduxStore.isAuthenticated){
           display = <div><h1>Admin</h1></div>
