@@ -2,7 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+/** ROUTES **/
 router.get('/', (req, res) => {
+    // Joins both tables before sending back to redux
     const queryText = 'SELECT * FROM "projects" LEFT JOIN "tags" ON "projects".tag_id = "tags".id;';
     pool.query(queryText)
     .then(result => {

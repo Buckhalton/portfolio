@@ -8,12 +8,9 @@ import Admin from '../Admin/Admin';
 
 class App extends Component {
  
-  componentDidMount = () => {
-
-  }
-
   // Renders the entire app on the DOM  
   render() {
+    // conditional rendering for Admin page
     let display;
     if(this.props.reduxStore.isAuthenticated) {
       display = <Header/>
@@ -25,7 +22,6 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            {/* <Header/> */}
             {display}
             <Route path="/admin" component={Admin}/>
           </div>

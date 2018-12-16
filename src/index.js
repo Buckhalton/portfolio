@@ -17,7 +17,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_PROJECTS', fetchProjects)
     yield takeEvery('DELETE_PROJECTS', deleteProjects)
     yield takeEvery('POST_PROJECTS', postProjects)
-}
+} // end rootSaga
 
 function* deleteProjects(action) {
     try {
@@ -26,7 +26,7 @@ function* deleteProjects(action) {
     } catch(error) {
         console.log(error);
     }
-}
+} // end deleteProjects
 
 function* fetchProjects() {
     try {
@@ -35,7 +35,7 @@ function* fetchProjects() {
     } catch(error) {
         console.log(error);
     }
-}
+} // end fetchProjects
 
 function* postProjects(action) {
     try {
@@ -44,7 +44,7 @@ function* postProjects(action) {
     } catch(error) {
         console.log(error);
     }
-}
+} // end postProjects
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -57,7 +57,7 @@ const isAuthenticated = (state = false, action) => {
         default:
             return state;
     }
-}
+} // end isAuthenticated
 
 // Used to store projects returned from the server
 const projects = (state = [], action) => {
@@ -67,7 +67,7 @@ const projects = (state = [], action) => {
         default:
             return state;
     }
-}
+} // end projects
 
 // Used to store the project tags (e.g. 'React', 'jQuery', 'Angular', 'Node.js')
 const tags = (state = [], action) => {
@@ -77,7 +77,7 @@ const tags = (state = [], action) => {
         default:
             return state;
     }
-}
+} // end tags
 
 // Create one store that all components can use
 const storeInstance = createStore(

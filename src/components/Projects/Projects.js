@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import Header from '../Header/Header';
 
+//This component is for displaying projects on the DOM
 class Projects extends Component {
     componentDidMount = () => {
         this.props.dispatch({type: 'FETCH_PROJECTS'})
-    }
+    } // end componentDidMount
 
   render() {
+      //Mapping projects onto the DOM
       let projectsDisplay = this.props.reduxStore.projects.map(project => {
           return(
               <div key={project.id}>

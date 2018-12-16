@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {withRouter, Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-
+// This component is the Admin page.
 class Admin extends Component {
     state = {
         name: '',
@@ -11,58 +11,64 @@ class Admin extends Component {
         github: '',
         website: '',
         description: '',
-    }
+    } // end State
 
     componentDidMount = () => {
+        //Sets isAuthenticated for conditional rendering.
         this.props.dispatch({type: 'SET_ADMIN', payload: true})
         this.props.dispatch({type: 'FETCH_PROJECTS'})
-    }
+    } // end componentDidMount
 
     setAuth = () => {
+        //changes isAuthenticated before leaving the page.
         this.props.dispatch({type: 'SET_ADMIN', payload: false})
-    }
+    } // end setAuth
 
+
+    // Start ChangeState methods
     changeTagState = (event) => {
         this.setState({
             ...this.state,
             tag_id: event.target.value
-        })
-    }
+        }) // end setState
+    } // end changeTagState
 
     changeDateState = (event) => {
         this.setState({
             ...this.state,
             date_completed: event.target.value,
-        })
-    }
+        }) // end setState
+    } // end changeDateState
 
     changeNameState = (event) => {
         this.setState({
             ...this.state,
             name: event.target.value,
-        })
-    }
+        }) // end setState
+    } // end changeNameState
 
     changeGithubState = (event) => {
         this.setState({
             ...this.state,
             github: event.target.value,
-        })
-    }
+        }) // end setState
+    } // end changeGithubState
 
     changeDescriptionState = (event) => {
         this.setState({
             ...this.state,
             description: event.target.value,
-        })
-    }
+        }) // end setState
+    }// end changeDescriptionState
 
     changeWebsiteState = (event) => {
         this.setState({
             ...this.state,
             website: event.target.value,
-        })
-    }
+        }) // end setState
+    } // end changeWebsiteState
+
+    //End changeState methods
 
     // changeState = (event) => {
     //     this.setState({
@@ -75,18 +81,19 @@ class Admin extends Component {
     //     })
     // }
 
-
+    //dispatches to index
     submitForm = (event) => {
         event.preventDefault();
         console.log(this.state);
         this.props.dispatch({type: 'POST_PROJECTS', payload: this.state})
-    }
+    } // end submitForm
 
     deleteProject = (project) => {
         this.props.dispatch({type: 'DELETE_PROJECTS', payload: project.id})
-    }
+    } // end deleteProjects
 
   render() {
+      //Maps out each project in the DB to a table
       let projectTableData = this.props.reduxStore.projects.map(project => {
           return (
             <tr key={project.id}>
