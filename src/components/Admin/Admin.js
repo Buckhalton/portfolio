@@ -86,6 +86,11 @@ class Admin extends Component {
         event.preventDefault();
         console.log(this.state);
         this.props.dispatch({type: 'POST_PROJECTS', payload: this.state})
+        if(this.props.reduxStore.projects === []){
+            alert('The post failed!');
+        } else {
+            alert('Success! Project posted');
+        }
     } // end submitForm
 
     deleteProject = (project) => {

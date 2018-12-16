@@ -16,11 +16,6 @@ const theme = createMuiTheme({
         },
   });
 
-  const styles = {
-      spacing: {
-          padding: '300 px'
-      }
-  }
   
 //This component is for displaying projects on the DOM
 class Projects extends Component {
@@ -36,9 +31,9 @@ class Projects extends Component {
       //Mapping projects onto the DOM
       let projectsDisplay = this.props.reduxStore.projects.map(project => {
           return(
-              <div>
+              <div key={project.id}>
                 <hr/>
-                <Grid container key={project.id} className={styles.spacing}>
+                <Grid container>
                     <img alt="thumbnail" src={project.thumbnail}/>
                     <Grid>
                         <h3>{project.name}</h3>

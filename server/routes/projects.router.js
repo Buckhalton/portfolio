@@ -5,7 +5,7 @@ const router = express.Router();
 /** ROUTES **/
 router.get('/', (req, res) => {
     // Joins both tables before sending back to redux
-    const queryText = 'SELECT * FROM "projects" LEFT JOIN "tags" ON "projects".tag_id = "tags".id;';
+    const queryText = 'SELECT * FROM "projects" LEFT JOIN "tags" ON "projects".tag_id = "tags".tag_id;';
     pool.query(queryText)
     .then(result => {
         res.send(result.rows);
@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
-    const queryText = 'DELETE FROM projects WHERE id = $1;';
+    const queryText = 'DELETE FROM "projects" WHERE id = $1;';
     pool.query(queryText, [id])
     .then(result => {
         res.sendStatus(202);

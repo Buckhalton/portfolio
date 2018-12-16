@@ -21,8 +21,8 @@ function* rootSaga() {
 
 function* deleteProjects(action) {
     try {
-        yield call(axios.delete, `/api/projects/${action.payload}`)
-        yield dispatch({type: 'FETCH_PROJECTS'})
+        yield call(axios.delete, `/api/projects/${action.payload}`);
+        yield dispatch({type: 'FETCH_PROJECTS'});
     } catch(error) {
         console.log(error);
     }

@@ -36,15 +36,15 @@ class Header extends Component {
       }
     return (
         <MuiThemeProvider theme={theme}>
-            <React.Fragment className={styles.root}>
+            <div className={styles.root}>
                 <AppBar position="static">
                     <Toolbar>
-                    <Typography className={styles.appBarText} variant="h6">
+                    <Typography variant="h6">
                         {display}
                     </Typography>
                     </Toolbar>
                 </AppBar>
-            </React.Fragment>
+            </div>
         </MuiThemeProvider>
     )
   }
